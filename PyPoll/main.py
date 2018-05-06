@@ -42,15 +42,34 @@ with open(csvpath, newline='') as csvfile:
     Percentage3 = (count3/len(Votes))*100
     Percentage4 = (count4/len(Votes))*100
 
+    candidate_one_result = Candidate[0] + ": " + str(Percentage1) + "%" + " (" + str(count1) + ")"
+    candidate_two_result = Candidate[1] + ": " + str(Percentage2) + "%" + " (" + str(count2) + ")"
+    candidate_three_result = Candidate[2] + ": " + str(Percentage3) + "%" + " (" + str(count3) + ")"
+    candidate_four_result = Candidate[3] + ": " + str(Percentage4) + "%" + " (" + str(count4) + ")"
+    total_votes = "Total Votes:" + str(len(Votes))
+    election_winner = "Winner: " + Candidate[winner.index(max(winner))]
     print("Election Results")
     print("-----------------------------------")
-    print("Total Votes:", len(Votes))
+    print(total_votes)
     print("-----------------------------------")
-    print(Candidate[0] + ": " + str(Percentage1) + "%" + " (" + str(count1) + ")")
-    print(Candidate[1] + ": " + str(Percentage2) + "%" + " (" + str(count2) + ")")
-    print(Candidate[2] + ": " + str(Percentage3) + "%" + " (" + str(count3) + ")")
-    print(Candidate[3] + ": " + str(Percentage4) + "%" + " (" + str(count4) + ")")
+    print(candidate_one_result)
+    print(candidate_two_result)
+    print(candidate_three_result)
+    print(candidate_four_result)
     print("-----------------------------------")
-    print("Winner: " + Candidate[winner.index(max(winner))])
+    print(election_winner)
     print("-----------------------------------")
-  
+    
+# Exporting results to a text file
+file = open('Result.txt','w')
+file.write('Election Results \n')
+file.write("-----------------------------------\n")
+file.write(total_votes+'\n')
+file.write("-----------------------------------\n")
+file.write(candidate_one_result+'\n')
+file.write(candidate_two_result+'\n')
+file.write(candidate_three_result+'\n')
+file.write(candidate_four_result+'\n')
+file.write("-----------------------------------\n")
+file.write(election_winner+'\n')
+file.close()
